@@ -1,6 +1,7 @@
 package com.carly.user;
 
 import com.carly.user.dto.UserGetDto;
+import com.carly.user.dto.UserGetReservationsDto;
 import com.carly.user.dto.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,4 +22,9 @@ public class UserService {
     public UserGetDto getById(Long id) {
         return userMapper.toUDto(userRepository.findById(id).orElseThrow());
     }
+
+    public UserGetReservationsDto getReservations(Long id) {
+        return userMapper.toReservationsDto(userRepository.findById(id).orElseThrow());
+    }
+
 }

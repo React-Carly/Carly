@@ -1,6 +1,7 @@
 package com.carly.user;
 
 import com.carly.user.dto.UserGetDto;
+import com.carly.user.dto.UserGetReservationsDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,11 @@ public class UserController {
     @GetMapping("/{id}")
     public UserGetDto getById(@PathVariable Long id) {
         return userService.getById(id);
+    }
+
+    @GetMapping("/{id}/reservations")
+    public UserGetReservationsDto getReservationsById(@PathVariable Long id) {
+        return userService.getReservations(id);
     }
 
 }

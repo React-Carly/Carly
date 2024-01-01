@@ -24,8 +24,8 @@ public class ReservationService {
         var user = userRepository.getReferenceById(reservationCreateDto.userId());
         var car = carRepository.getReferenceById(reservationCreateDto.carId());
         var reservation = reservationMapper.toEntity(reservationCreateDto);
-        user.addReservation(reservation);
         reservation.setCar(car);
+        user.addReservation(reservation);
         return reservationMapper
                 .toDto(reservationRepository.save(reservation));
     }

@@ -42,8 +42,8 @@ public class User implements UserDetails {
     }
 
     public void addReservation(Reservation reservation) {
-        reservations.add(reservation);
         reservation.setUser(this);
+        reservations.add(reservation);
     }
 
     @Override
