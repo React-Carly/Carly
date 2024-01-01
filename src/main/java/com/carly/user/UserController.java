@@ -2,11 +2,9 @@ package com.carly.user;
 
 import com.carly.reservation.dto.ReservationGetDto;
 import com.carly.user.dto.UserGetDto;
+import com.carly.user.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,4 +29,13 @@ public class UserController {
         return userService.getReservations(id);
     }
 
+    @PatchMapping("/{id}")
+    public UserGetDto updateUser(@PathVariable Long id, @RequestBody UserUpdateDto userUpdateDto) {
+        return userService.updateUser(id, userUpdateDto);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+    }
 }

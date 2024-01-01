@@ -5,6 +5,7 @@ import com.carly.reservation.dto.ReservationGetDto;
 import com.carly.reservation.dto.ReservationMapper;
 import com.carly.user.dto.UserGetDto;
 import com.carly.user.dto.UserMapper;
+import com.carly.user.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +32,13 @@ public class UserService {
         return reservationRepository.findByUserId(id).stream().map(reservationMapper::toDto).collect(Collectors.toList());
     }
 
+    public UserGetDto updateUser(Long id, UserUpdateDto userUpdateDto) {
+        var user = userRepository.getReferenceById(id);
+        userMapper.updateUser(userUpdateDto, user);
+        return userMapper.toUDto(userRepository.save(user));
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }

@@ -1,9 +1,7 @@
 package com.carly.reservation;
 
 import com.carly.car.CarRepository;
-import com.carly.reservation.dto.ReservationCreateDto;
-import com.carly.reservation.dto.ReservationGetDto;
-import com.carly.reservation.dto.ReservationMapper;
+import com.carly.reservation.dto.*;
 import com.carly.user.UserRepository;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +30,16 @@ public class ReservationService {
 
     public List<ReservationGetDto> getAllReservations() {
         return reservationRepository.findAll().stream().map(reservationMapper::toDto).collect(Collectors.toList());
+    }
+
+    public ReservationDetailsDto getById(Long id) {
+        return reservationMapper.toDetailsDto(reservationRepository.findById(id).orElseThrow());
+    }
+
+    public ReservationGetDto updateReservation(Long id, ReservationUpdateDto reservationUpdateDto) {
+        var reservation = reservationRepository.getReferenceById(id);
+        reservationMapper.updateReservation(reservationUpdateDto, reservation);
+        return reservationMapper.toDto(reservationRepository.save(reservation));
     }
 
     public void deleteReservation(Long id) {

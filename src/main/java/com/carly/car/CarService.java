@@ -3,6 +3,7 @@ package com.carly.car;
 import com.carly.car.dto.CarCreateDto;
 import com.carly.car.dto.CarGetDto;
 import com.carly.car.dto.CarMapper;
+import com.carly.car.dto.CarUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -34,5 +35,19 @@ public class CarService {
         return carRepository.findAll(example, pageable).stream()
                 .map(carMapper::toDto)
                 .toList();
+    }
+
+    public CarGetDto getById(Long id) {
+        return carMapper.toDto(carRepository.findById(id).orElseThrow());
+    }
+
+    public CarGetDto updateCar(Long id, CarUpdateDto carUpdateDto) {
+        var car = carRepository.getReferenceById(id);
+        carMapper.updateCar(carUpdateDto, car);
+        return carMapper.toDto(carRepository.save(car));
+    }
+
+    public void deleteCar(Long id) {
+        carRepository.deleteById(id);
     }
 }
