@@ -17,6 +17,7 @@ import java.util.function.Function;
 public class JwtService {
 
     private static final String SECRET_KEY = "B374A26A71490437AA024E4FADD5B497FDFF1A8EA6FF12F6FB65AF2720B59CCF";
+    // Replace with env
 
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractEmail(token);
