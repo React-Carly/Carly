@@ -1,16 +1,19 @@
 package com.carly.reservation.dto;
 
-import lombok.NonNull;
+import com.carly.reservation.validation.ReservationDateValidation;
+import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
 
+@ReservationDateValidation
 public record ReservationCreateDto(
-        @NonNull
+        @NotNull(message = "User id cannot be null")
         Long userId,
-        @NonNull
+        @NotNull(message = "Car id cannot be null")
         Long carId,
-        @NonNull
-        String startDate,
-        @NonNull
-        String endDate
+        @NotNull(message = "Start date cannot be null")
+        LocalDate startDate,
+        @NotNull(message = "End date cannot be null")
+        LocalDate endDate
 ) {
 }

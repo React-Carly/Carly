@@ -4,6 +4,7 @@ import com.carly.reservation.dto.ReservationCreateDto;
 import com.carly.reservation.dto.ReservationDetailsDto;
 import com.carly.reservation.dto.ReservationGetDto;
 import com.carly.reservation.dto.ReservationUpdateDto;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ public class ReservationController {
     private final ReservationService reservationService;
 
     @PostMapping
-    public ReservationGetDto createReservation(@RequestBody ReservationCreateDto reservationCreateDto) {
+    public ReservationGetDto createReservation(@RequestBody @Valid ReservationCreateDto reservationCreateDto) {
         return reservationService.createReservation(reservationCreateDto);
     }
 

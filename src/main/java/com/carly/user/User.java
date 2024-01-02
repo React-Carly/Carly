@@ -2,6 +2,8 @@ package com.carly.user;
 
 import com.carly.reservation.Reservation;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +16,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "User", uniqueConstraints = {
+        @UniqueConstraint(name = "username", columnNames = {"username"})
+})
 @Getter
 @Setter
 @Builder
@@ -32,9 +37,17 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+    @NotBlank
+    @NotNull
+    @Column(unique = true)
     private String username;
+    @NotBlank
+    @NotNull
     private String password;
+    @NotBlank
+    @NotNull
     private String name;
+
     private Role role;
 
     @Override

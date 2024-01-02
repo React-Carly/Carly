@@ -1,7 +1,8 @@
-
 package com.carly.car;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
@@ -13,13 +14,20 @@ import java.util.Objects;
 @Setter
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @NotBlank
+    @NotNull
     private String name;
+    @NotBlank
+    @NotNull
     private String model;
+    @NotBlank
+    @NotNull
     private String color;
+    @NotNull
     private Integer year;
     private String description;
 //    private String image;

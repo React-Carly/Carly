@@ -23,7 +23,7 @@ public class ApplicationConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return username -> userRepository.findByUsername(username)
-                .orElseThrow(() -> new NoSuchElementException("No user with email: %s found".formatted(username)));
+                .orElseThrow(() -> new NoSuchElementException("No user with username: %s found".formatted(username)));
     }
 
     @Bean
