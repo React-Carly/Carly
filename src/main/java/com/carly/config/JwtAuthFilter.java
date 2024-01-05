@@ -31,19 +31,19 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         final String authorization = request.getHeader("Authorization");
         final String token;
-        final String email;
+        final String username;
 
         if (authorization == null || !authorization.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
         token = authorization.substring(7); // After "Bearer " it is 7th character
-        email = jwtService.extractEmail(token);
-        if (email == null || SecurityContextHolder.getContext().getAuthentication() != null) {
+        username = jwtService.extractEmail(token);
+        if (username == null || SecurityContextHolder.getContext().getAuthentication() != null) {
             filterChain.doFilter(request, response);
             return;
         }
-        var userDetails = this.userDetailsService.loadUserByUsername(email);
+        var userDetails = this.userDetailsService.loadUserByUsername(username);
         if (jwtService.validateToken(token, userDetails)) {
             var authenticationToken = new UsernamePasswordAuthenticationToken(
                     userDetails,
@@ -52,6 +52,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             );
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+            System.out.println("Authenticated user " + username + ", setting security context");
         }
         filterChain.doFilter(request, response);
     }

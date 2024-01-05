@@ -1,0 +1,48 @@
+<component name="ProjectRunConfigurationManager">
+    <configuration default="false" name="Deploy" type="com.microsoft.intellij.run.configuration.WebAppConfigurationType"
+                   factoryName="Azure Web App">
+        <option name="appServicePlanName" value=""/>
+        <option name="appServicePlanResourceGroupName" value=""/>
+        <option name="appSettingsKey" value="35eac084-892a-4acd-b525-d02a9cc253ca"/>
+        <option name="appSettingsToRemove">
+            <set/>
+        </option>
+        <option name="applicationLogLevel" value="Error"/>
+        <option name="artifactIdentifier" value="Carly"/>
+        <option name="azureArtifactType" value="Gradle"/>
+        <option name="creatingAppServicePlan" value="false"/>
+        <option name="creatingNew" value="false"/>
+        <option name="creatingResGrp" value="false"/>
+        <option name="deployToRoot" value="true"/>
+        <option name="deployToSlot" value="false"/>
+        <option name="enableApplicationLog" value="false"/>
+        <option name="enableDetailedErrorMessage" value="false"/>
+        <option name="enableFailedRequestTracing" value="false"/>
+        <option name="enableWebServerLogging" value="false"/>
+        <option name="newSlotConfigurationSource"/>
+        <option name="newSlotName"/>
+        <option name="openBrowserAfterDeployment" value="false"/>
+        <option name="operatingSystem" value="linux"/>
+        <option name="packaging" value="jar"/>
+        <option name="pricing" value=""/>
+        <option name="projectBase" value=""/>
+        <option name="projectType" value=""/>
+        <option name="region" value=""/>
+        <option name="resourceGroup" value=""/>
+        <option name="slotName"/>
+        <option name="slotPanelVisible" value="true"/>
+        <option name="subscriptionId" value="46109e7f-a76e-4d5a-bebe-23124cccdfcd"/>
+        <option name="targetName" value=""/>
+        <option name="targetPath" value=""/>
+        <option name="webAppContainer" value="Java SE"/>
+        <option name="webAppId"
+                value="/subscriptions/46109e7f-a76e-4d5a-bebe-23124cccdfcd/resourceGroups/pw_react/providers/Microsoft.Web/sites/pw-react-carly"/>
+        <option name="webAppJavaVersion" value="17"/>
+        <option name="webAppName" value=""/>
+        <option name="webServerLogQuota" value="35"/>
+        <option name="webServerRetentionPeriod"/>
+        <method v="2">
+            <option name="Gradle.BeforeRunTask" enabled="true" tasks="assemble" externalProjectPath="$PROJECT_DIR$"/>
+        </method>
+    </configuration>
+</component>
