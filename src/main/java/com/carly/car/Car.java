@@ -19,7 +19,6 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
-
     @NotBlank
     @NotNull
     private String brand;
@@ -40,12 +39,13 @@ public class Car {
     @NotNull
     private Integer pricePerHour;
     private String description;
-
     @Column(name = "created_at")
     @CreationTimestamp
     private LocalDate createdAt;
-//    private List<String> images;
 
+    private Double latitude;
+    private Double longitude;
+//    private List<String> images;
 
     @Override
     public final boolean equals(Object o) {

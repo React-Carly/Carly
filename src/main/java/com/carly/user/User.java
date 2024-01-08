@@ -56,6 +56,16 @@ public class User implements UserDetails {
 
     private String system = "carly";
 
+    @NotBlank
+    @NotNull
+    private String city;
+    @NotBlank
+    @NotNull
+    private String street;
+    @NotBlank
+    @NotNull
+    private String zipCode;
+
     @Column(name = "created_at")
     @CreationTimestamp
     private LocalDate createdAt;
