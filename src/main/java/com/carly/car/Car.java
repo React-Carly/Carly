@@ -5,8 +5,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Entity
@@ -20,17 +22,30 @@ public class Car {
 
     @NotBlank
     @NotNull
-    private String name;
+    private String brand;
     @NotBlank
     @NotNull
     private String model;
+    @NotNull
+    private FuelType fuelType;
+    @NotNull
+    private Integer mileage;
+    @NotNull
+    private Short seats;
     @NotBlank
     @NotNull
     private String color;
     @NotNull
     private Integer year;
+    @NotNull
+    private Integer pricePerHour;
     private String description;
-//    private String image;
+
+    @Column(name = "created_at")
+    @CreationTimestamp
+    private LocalDate createdAt;
+//    private List<String> images;
+
 
     @Override
     public final boolean equals(Object o) {
