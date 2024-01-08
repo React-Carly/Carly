@@ -23,4 +23,13 @@ public class RegistrationRequest {
     @NotNull(message = "Name cannot be null")
     @NotBlank(message = "Name cannot be blank")
     private String name;
+    @NotBlank(message = "City cannot be blank")
+    @NotNull(message = "City cannot be null")
+    private String city;
+    @NotBlank(message = "Street cannot be blank")
+    @NotNull(message = "Street cannot be null")
+    private String street;
+    @NotBlank(message = "Zip code cannot be blank")
+    @NotNull(message = "Zip code cannot be null")
+    private String zipCode;
 }

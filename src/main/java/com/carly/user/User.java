@@ -54,7 +54,7 @@ public class User implements UserDetails {
 
     private Boolean status = true;
 
-    private String system = "carly";
+    private String booking_system = "carly";
 
     @NotBlank
     @NotNull
