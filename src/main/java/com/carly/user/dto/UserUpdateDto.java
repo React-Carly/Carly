@@ -5,6 +5,9 @@ import com.carly.user.Role;
 public record UserUpdateDto(
         String username,
         String name,
-        Role role
+        Role role,
+        String city,
+        String street,
+        String zipCode
 ) {
 }
