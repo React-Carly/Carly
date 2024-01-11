@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/{id}/reservations")
     public List<ReservationGetDto> getReservationsById(@PathVariable Long id) {
-        return userService.getReservations(id);
+        return userService.getReservationsByUserId(id);
     }
 
     @PatchMapping("/{id}")

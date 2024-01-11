@@ -1,12 +1,17 @@
 package com.carly.car.dto;
 
-import lombok.NonNull;
+import com.carly.car.FuelType;
+import jakarta.validation.constraints.NotNull;
 
 public record CarCreateDto(
-        @NonNull String name,
-        @NonNull String model,
-        @NonNull String color,
-        @NonNull Integer year,
-        @NonNull String description
+        @NotNull String brand,
+        @NotNull String model,
+        @NotNull FuelType fuelType,
+        @NotNull Integer mileage,
+        @NotNull Short seats,
+        @NotNull String color,
+        @NotNull Integer year,
+        @NotNull Integer pricePerHour,
+        @NotNull String description
 ) {
 }

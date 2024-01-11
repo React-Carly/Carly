@@ -3,8 +3,7 @@ package com.carly.car;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -14,6 +13,9 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,8 +45,8 @@ public class Car {
     @CreationTimestamp
     private LocalDate createdAt;
 
-    private Double latitude;
-    private Double longitude;
+    private Double latitude = 0.d;
+    private Double longitude = 0.d;
 //    private List<String> images;
 
     @Override

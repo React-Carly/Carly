@@ -28,8 +28,8 @@ public class UserService {
         return userMapper.toUDto(userRepository.findById(id).orElseThrow());
     }
 
-    public List<ReservationGetDto> getReservations(Long id) {
-        return reservationRepository.findByUserId(id).stream().map(reservationMapper::toDto).collect(Collectors.toList());
+    public List<ReservationGetDto> getReservationsByUserId(Long userId) {
+        return reservationRepository.findByUserId(userId).stream().map(reservationMapper::toDto).collect(Collectors.toList());
     }
 
     public UserGetDto updateUser(Long id, UserUpdateDto userUpdateDto) {

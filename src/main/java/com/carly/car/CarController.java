@@ -27,7 +27,7 @@ public class CarController {
     }
 
     @GetMapping("/search")
-    public List<CarGetDto> getAllCarsWithParams(Car car, @PageableDefault(size = 20, sort = "name") Pageable pageable) {
+    public List<CarGetDto> getAllCarsWithParams(Car car, @PageableDefault(size = 20, sort = "model") Pageable pageable) {
         return carService.getAllCars(car, pageable);
     }
 

@@ -7,8 +7,8 @@ public record ReservationGetDto(
         Long id,
         LocalDate startDate,
         LocalDate endDate,
-
         Long userId,
-        Long carId
+        Long carId,
+        LocalDate createdAt
 ) {
 }
