@@ -5,9 +5,12 @@ import com.carly.user.Role;
 
 public record UserGetDto(
         Long id,
-
         String username,
         String name,
-        Role role
+        Role role,
+        String city,
+        String street,
+        String zipCode,
+        String createdAt
 ) {
 }

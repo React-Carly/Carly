@@ -29,6 +29,12 @@ public class CarService {
                 .toList();
     }
 
+    public List<CarGetDto> getAllCars(Pageable pageable) {
+        return carRepository.findAll(pageable).stream()
+                .map(carMapper::toDto)
+                .toList();
+    }
+
     public List<CarGetDto> getAllCars(Car car, Pageable pageable) {
         var matcher = ExampleMatcher.matching().withStringMatcher(ExampleMatcher.StringMatcher.EXACT);
         var example = Example.of(car, matcher);

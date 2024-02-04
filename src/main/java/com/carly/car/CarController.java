@@ -22,12 +22,17 @@ public class CarController {
     }
 
     @GetMapping
-    public List<CarGetDto> getAllCars() {
-        return carService.getAllCars();
+    public List<CarGetDto> getAllCars(@PageableDefault(size = 20, sort = "id") Pageable pageable) {
+        return carService.getAllCars(pageable);
+    }
+
+    @GetMapping("/count")
+    public Integer getCount() {
+        return carService.getAllCars().toArray().length;
     }
 
     @GetMapping("/search")
-    public List<CarGetDto> getAllCarsWithParams(Car car, @PageableDefault(size = 20, sort = "model") Pageable pageable) {
+    public List<CarGetDto> getAllCarsWithParams(Car car, @PageableDefault(size = 20, sort = "id") Pageable pageable) {
         return carService.getAllCars(car, pageable);
     }
 

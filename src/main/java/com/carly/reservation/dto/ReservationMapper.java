@@ -9,8 +9,6 @@ public interface ReservationMapper {
     @Mapping(target = "carId", source = "car.id")
     ReservationGetDto toDto(Reservation reservation);
 
-    ReservationDetailsDto toDetailsDto(Reservation reservation);
-
     Reservation toEntity(ReservationCreateDto reservationCreateDto);
 
     void updateReservation(ReservationUpdateDto sourceReservationDto, @MappingTarget Reservation targetReservation);

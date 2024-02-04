@@ -7,6 +7,7 @@ import com.carly.user.dto.UserGetDto;
 import com.carly.user.dto.UserMapper;
 import com.carly.user.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,10 @@ public class UserService {
     private final ReservationRepository reservationRepository;
     private final UserMapper userMapper;
     private final ReservationMapper reservationMapper;
+
+    public List<UserGetDto> getAll(Pageable pageable) {
+        return userRepository.findAll(pageable).stream().map(userMapper::toUDto).collect(Collectors.toList());
+    }
 
     public List<UserGetDto> getAll() {
         return userRepository.findAll().stream().map(userMapper::toUDto).collect(Collectors.toList());
@@ -40,5 +45,9 @@ public class UserService {
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public List<UserGetDto> getByUsername(String username) {
+        return userRepository.findByUsername(username).stream().map(userMapper::toUDto).collect(Collectors.toList());
     }
 }
